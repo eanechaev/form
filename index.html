@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Форма для взаимодействия инициатора закупки и специалиста по закупкам</title>
+	<style>
+		body {
+			background-color: #F5F5F5;
+			font-family: Arial, sans-serif;
+			color: #333;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+			margin-bottom: 30px;
+			color: #00A0B0;
+		}
+
+		form {
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #FFF;
+			box-shadow: 0 0 5px rgba(0,0,0,0.1);
+			border-radius: 5px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		input[type="text"], select {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			font-size: 16px;
+			margin-bottom: 20px;
+		}
+
+		button {
+			display: block;
+			background-color: #00A0B0;
+			color: #FFF;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 3px;
+			font-size: 16px;
+			cursor: pointer;
+			margin-top: 20px;
+		}
+
+		textarea {
+			width: 100%;
+			height: 100px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			font-size: 16px;
+			margin-bottom: 20px;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>Форма для взаимодействия инициатора закупки и специалиста по закупкам</h1>
+	<form>
+		<label for="question1">1. Закупка согласована на Рабочей группе или надо вынести?</label>
+		<input type="text" id="question1" name="question1" placeholder="Введите ответ на вопрос 1" required>
+
+		<label for="question2">2. Укажите из какого бюджета и счета будет оплата оплаты "31 или 30".</label>
+		<input type="text" id="question2" name="question2" placeholder="Введите ответ на вопрос 2" required>
+
+		<label for="question3">3. Укажите срок исполнения обязательств (если это важно).</label>
+		<input type="text" id="question3" name="question3" placeholder="Введите ответ на вопрос 3" required>
+
+		<label for="question4">4. Есть ли пожелания - с кем вы хотели бы заключить договор (если это важно).</label>
+		<textarea id="question4" name="question4" placeholder="Введите ответ на вопрос 4"></textarea>
+        <button type="submit">Отправить</button>
+    </form>
+    
+    <script>
+        const form = document.querySelector('form');
+        const submitButton = form.querySelector('button');
+        const resultDiv = document.createElement('div');
+        form.appendChild(resultDiv);
+    
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const question1 = form.querySelector('#question1').value;
+            const question2 = form.querySelector('#question2').value;
+            const question3 = form.querySelector('#question3').value;
+            const question4 = form.querySelector('#question4').value;
+    
+            const result = `1. Закупка согласована на Рабочей группе или надо вынести? Ответ: ${question1}\n\n2. Укажите из какого бюджета и счета будет оплата оплаты "31 или 30". Ответ: ${question2}\n\n3. Укажите срок исполнения обязательств (если это важно). Ответ: ${question3}\n\n4. Есть ли пожелания - с кем вы хотели бы заключить договор (если это важно). Ответ: ${question4}`;
+            resultDiv.innerHTML = `<h2>Результат:</h2><textarea>${result}</textarea>`;
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>    
